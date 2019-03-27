@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Fake cloud viz</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="/sdg-app.js"></script>
+    <script>
+      function onReceiveData(data) {
+        document.querySelector('#data').innerHTML = 'received data from main app:<br /><pre>' + JSON.stringify(data, null, 4) + '</pre>';
+      }
+    </script>
+  </head>
+  <body>
+    <div style="display:flex; flex-direction: column; align-items:center;">
+      <div style="margin: 100px 0px 50px 0px;"><h2>[Fake cloud viz]</h2></div>
+      <div style="width: 100%; display:flex; justify-content: space-around">
+        <div>
+          <input
+            type="button"
+            value="Simulate publication display"
+            onclick="sdgAppDisplayPublication('10.1787/5jm2cv4t4gzs-en')"
+            style="width: 210px"
+          />
+        </div>
+        <div>
+          <input
+            type="button"
+            value="Simulate publication bookmark"
+            onclick="sdgAppBookmarkPublication('10.1787/5jm2cv4t4gzs-en')"
+            style="width: 210px"
+          />
+        </div>
+        <div>
+          <input
+            type="button"
+            value="Simulate data request"
+            onclick="sdgAppGetData(onReceiveData)"
+            style="width: 210px"
+          />
+          <div id="data"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
