@@ -21,6 +21,10 @@ function sdgAppGetData(onReceiveDataCallback) {
     };
     window.addEventListener('message', handleReceiveData);
     window.parent.postMessage({ type: CLOUD_VIZ_REQUEST_DATA }, '*');
+  } else {
+    d3.tsv("data/data.tsv", function(error, data) {
+      onReceiveDataCallback(data);
+    });
   }
 }
 
